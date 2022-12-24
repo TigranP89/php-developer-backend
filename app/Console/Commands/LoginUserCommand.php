@@ -33,7 +33,19 @@ class LoginUserCommand extends Command
             $user = Auth::user();
             $token = $user->createToken('MyApp')->accessToken;
 
-            $this->info($token);
+            User::where('id', $user->id)->update(['token' => $token]);
+
+
+//            app()->call('App\Http\Controllers\UserController@loginUser');
+            $this->info('Successfuly update token');
+        } else {
+            $this->info('Something gone wrong');
         }
+    }
+
+    public function userDetals(){
+        $user = Auth::guard('api')->user();
+
+        return response()->json(['data'=> $user]);
     }
 }
