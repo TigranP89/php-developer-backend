@@ -35,8 +35,6 @@ class LoginUserCommand extends Command
 
             User::where('id', $user->id)->update(['token' => $token]);
 
-
-//            app()->call('App\Http\Controllers\UserController@loginUser');
             $this->info('Successfuly update token');
         } else {
             $this->info('Something gone wrong');

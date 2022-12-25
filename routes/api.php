@@ -25,10 +25,6 @@ Route::group(['middleware' => 'auth:api'],function (){
     //
 });
 
-Route::post('/callsss', function (){
-    $exitCode = Artisan::call('user:login');
-});
-
 Route::group(['prefix' => 'backend'], function (){
     Route::get('/employees', [EmployeeController::class, 'index']);
     Route::get('/employees/{id}', [EmployeeController::class, 'show']);
